@@ -1,0 +1,159 @@
+import java.util.Scanner;
+
+public class Main {
+    static String[] arr = {"kyle", "dorothy", "alyanna", "dave", "tyron"};
+    static int length = 0;
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int select;
+        boolean match = true;
+        int arrSize = arr.length;
+        while (!arr[length].isEmpty() && length < arrSize) {
+            length++;
+        }
+        while (match) {
+            System.out.println("1. INSERT");
+            System.out.println("2. DELETE");
+            System.out.println("3. RETRIEVE");
+            System.out.println("4. EXIT\n");
+            System.out.print("Please select: ");
+            select = s.nextInt();
+            switch (select) {
+                case 1: {
+                    insert();
+                    break;
+                }
+                case 2: {
+                    del();
+                    break;
+                }
+                case 3: {
+                    retrieve();
+                    break;
+                }
+                case 4: {
+                    System.out.println("Program finished...");
+                    match = false;
+                    break;
+                }
+                default: {
+                    System.out.println("invalid input!!");
+                    s.nextLine();
+                    continue;
+                }
+            }
+        }
+    }
+
+    public static void insert() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("[ INSERT ]\n");
+        String name;
+        System.out.println();
+        System.out.print("Existing array list: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i]);
+            if (i < length - 1) {
+                System.out.print(", ");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println("\n");
+        System.out.print("Enter name to insert: ");
+        name = scanner.nextLine();
+        arr[length] = name;
+        length++;
+        System.out.println("\n");
+        System.out.print("New array list: ");
+        for (int k = 0; k < length; k++) {
+            System.out.print(arr[k]);
+            if (k < length - 1) {
+                System.out.print(", ");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void del() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("[ DELETE ]\n");
+        String name;
+        System.out.println();
+        System.out.print("Existing array list: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i]);
+            if (i < length - 1) {
+                System.out.print(", ");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println("\n");
+        System.out.print("Enter name to delete: ");
+        name = scanner.nextLine();
+        int index = -1;
+        for (int j = 0; j < length; j++) {
+            if (arr[j].equals(name)) {
+                index = j;
+                break;
+            }
+        }
+        if (index != -1) {
+            for (int k = index; k < length - 1; k++) {
+                arr[k] = arr[k + 1];
+            }
+            length--;
+            System.out.println("\n");
+            System.out.print("New array list: ");
+            for (int m = 0; m < length; m++) {
+                System.out.print(arr[m]);
+                if (m < length - 1) {
+                    System.out.print(", ");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        } else {
+            System.out.println("\n");
+            System.out.println("Name not found in the array list.");
+        }
+    }
+
+    public static void retrieve() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("[ RETRIEVE ]\n");
+        String name;
+        System.out.println();
+        System.out.print("Existing array list: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i]);
+            if (i < length - 1) {
+                System.out.print(", ");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println("\n");
+        System.out.print("Enter name to retrieve: ");
+        name = scanner.nextLine();
+        boolean found = false;
+        for (int j = 0; j < length; j++) {
+            if (arr[j].equals(name)) {
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            System.out.println("\n");
+            System.out.println("Name found in the array list.");
+        } else {
+            System.out.println("\n");
+            System.out.println("Name not found in the array list.");
+        }
+    }
+}

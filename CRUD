@@ -1,0 +1,166 @@
+import java.util.*;
+
+public class Main{
+    private static Scanner s = new Scanner(System.in);
+    private static LinkedList <String> list = new LinkedList<>();
+
+    public static void Add(){
+        while(true){
+            System.out.println("\tADD ");
+            System.out.print("Enter item to add: ");
+            String add = s.nextLine();
+
+            boolean running = true;
+            for(String item : list){
+                if(item.equalsIgnoreCase(add)){
+                    System.out.println("Item already exist.");
+                    running = false;
+                }
+            }
+            if(running){
+                list.add(add);
+                System.out.println("Item added successfully.");
+                break;
+            }
+        }
+    }
+    public static void Delete(){
+        if(!list.isEmpty()){
+            System.out.println("\tDELETE");
+
+
+            for(String items : list){
+                System.out.println(items);
+
+            }
+            while(true){
+                System.out.println("Enter item to delete: ");
+                String del = s.nextLine();
+
+                boolean running = true;
+                for(String item : list){
+                    if(item.equalsIgnoreCase(del)){
+                        list.remove(del);
+                        System.out.println("Item deleted successfully.");
+                        running = false;
+                    }
+                }
+                if(running){
+                    System.out.println("Item not found.");
+                }else{
+                    break;
+                }
+            }
+        }else{
+            System.out.println("No item in the list.");
+        }
+    }
+    public static void Update(){
+        if(!list.isEmpty()){
+            System.out.println("\tUPDATE ");
+
+
+            for(String items : list){
+                System.out.println(items);
+
+            }
+            while(true){
+                System.out.print("Enter item to update: ");
+                String update = s.nextLine();
+                System.out.print("Enter item to replace: ");
+                String replace = s.nextLine();
+
+                int index = list.indexOf(update);
+
+                boolean running = true;
+                for(String item : list){
+                    if(item.equalsIgnoreCase(update)){
+                        list.set(index, replace);
+                        System.out.println("Item updated successfully.");
+                        running = false;
+                    }
+                }
+                if(running){
+                    System.out.println("Item not found.");
+                }else{
+                    break;
+                }
+            }
+        }else{
+            System.out.println("No item in the list.");
+        }
+    }
+    public static void Display(){
+        if(!list.isEmpty()){
+            System.out.println("\tDISPLAY ");
+
+
+            for(String items : list){
+                println(items);
+
+            }
+        }else{
+            System.out.println("No item in the list.");
+        }
+    }
+
+    public static void main(String[] args){
+        while(true){
+            System.out.println("1. Add");
+            System.out.println("2. Delete");
+            System.out.println("3. Update");
+            System.out.println("4. Display");
+            System.out.println("5. Exit");
+            System.out.print("Enter the number you choose : ");
+            String enter = s.nextLine();
+
+            switch(ErrorHandler(enter)){
+                case 1:{
+                    Add();
+                    break;
+                }
+                case 2:{
+                    Delete();
+                    break;
+                }
+                case 3:{
+                    Update();
+                    break;
+                }
+                case 4:{
+                    Display();
+                    break;
+                }
+                case 5:{
+                    println("Program finished...");
+                    System.exit(0);
+                    break;
+                }default:
+            }
+        }
+    }
+
+    public static int ErrorHandler(String var){
+        int val = 0;
+
+        try{
+            val = Integer.parseInt(var);
+        }catch(NumberFormatException intException){
+            println("Invalid input.");
+        }
+        return val;
+    }
+
+    public static void print(String var){
+        System.out.print(var);
+    }
+    public static void print(int var){
+        System.out.print(var);
+    }
+    public static void println(String var){
+        System.out.println(var);
+    }
+    public static void println(int var){
+        System.out.println(var);
+    }
+}

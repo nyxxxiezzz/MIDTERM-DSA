@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String[][] array = new String[10][10];
+        String[] info = {"Name", "Age", "Address", "Gender"};
+        int elements = 0, index, ch;
+        boolean match = false;
+        int arr = info.length;
+        do {
+            System.out.println("Menu: ");
+            System.out.println("1. Insert ");
+            System.out.println("2. Display ");
+            System.out.println("3. Exit ");
+            System.out.print("Choose: ");
+            ch = input.nextInt();
+            input.nextLine();
+            switch (ch) {
+                case 1: {
+                    while (true) {
+                        System.out.print("How many elements you want to add? Maximum of 5 ");
+                        elements = input.nextInt();
+                        input.nextLine();
+                        if (elements > 5) {
+                            System.out.println("Maximum number is 5, you must enter below than 5! ");
+                            continue;
+                        } else {
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < elements; i++) {
+                        for (int j = 0; j < arr; j++) {
+                            System.out.print(info[j] + ": ");
+                            array[i][j] = input.nextLine();
+                        }
+                    }
+                    match = true;
+                    break;
+                }
+                case 2: {
+                    if (match) {
+                        while (true) {
+                            System.out.print("Enter index you want to display [0, 1, 2, 3, 4]: ");
+                            index = input.nextInt();
+                            input.nextLine();
+                            if (index >= elements) {
+                                System.out.println("Out of the size of elements, you must enter lower than " + elements + "!");
+                                continue;
+                            } else {
+                                break;
+                            }
+                        }
+                        for (int j = 0; j < elements; j++) {
+                            if (index == j) {
+                                for (int i = 0; i < arr; i++) {
+                                    System.out.println(info[i] + ": " + array[index][i]);
+                                }
+                            }
+                        }
+                    } else {
+                        System.out.println("No elements added yet!");
+                    }
+                    break;
+                }
+                case 3: {
+                    System.exit(0);
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid input! Please try again.");
+                    break;
+                }
+            }
+        } while (true);
+    }
+}

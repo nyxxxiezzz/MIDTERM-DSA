@@ -1,0 +1,106 @@
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+
+
+        System.out.println("1.Nina Labang");
+        System.out.println("2.Mk Grefiel");
+        System.out.println("Choose:");
+        int ch=s.nextInt();
+
+        switch (ch){
+            //Algorithm
+            //How  to calculate your Body Mass Index
+            //Step 1: Measure your weight in kilogram
+            //Step 2:Measure your height in meter
+            //Step 3:Multipy yoir height in meters (m)by itself
+            //Step 4:Divide your weight in kilograms(km)by your step 3
+
+            case 1:
+                System.out.println("Nina Labang");
+                System.out.println("How to Calculate Body Mass Index ");
+
+                System.out.println("Weight in Kilogram:");
+                double w = s.nextDouble();
+                System.out.println("Height in Meter:");
+                double h = s.nextDouble();
+
+                double total=w/(h*h);
+                System.out.print("Your Body Mass Index (BMI) is:  " + total );
+
+                double bmi= total;
+
+                if (bmi < 18.5) {
+                    System.out.println("Underweigh");
+                }
+                else if (bmi < 25) {
+                    System.out.println("Normal");
+                }
+                else if (bmi < 30) {
+                    System.out.println("Overweight");
+                }
+                else {
+                    System.out.println("Obese");
+                }
+            case 2:
+                System.out.println("Mk Grefiel");
+                
+                        /* Algorithm:
+                         * 1. Prompt the user to enter two numbers
+                         * 2. Prompt the user to choose an operation (addition, subtraction, multiplication, division).
+                         * 3. Based on the user's choice, perform the corresponding operation on the two numbers.
+                         * 4. Display the result.
+                         */
+
+                        double num1, num2, result;
+                        char operator;
+
+                        System.out.print("Enter first number: ");
+                        num1 = s.nextDouble();
+
+                        System.out.print("Enter second number: ");
+                        num2 = s.nextDouble();
+
+                        System.out.print("Choose an operator (+, -, *, /):");
+                        operator = s.next().charAt(0);
+
+                        switch(operator) {
+                            case '+':
+                                result = num1 + num2;
+                                break;
+                            case '-':
+                                result = num1 - num2;
+                                break;
+                            case '*':
+                                result = num1 * num2;
+                                break;
+                            case '/':
+                                if(num2 != 0) {
+                                    result = num1 / num2;
+                                }else {
+                                    System.out.println("Error: Division by zero.");
+                                    return;
+                                }
+                                break;
+                            default:
+                                System.out.println("Invalid operator.");
+                                return;
+                        }
+
+                        System.out.println("Result: " + result);
+
+                        s.close();
+
+                    }
+
+                }
+
+
+
+        }
+
+
+
+
